@@ -1,0 +1,30 @@
+version: "3.5"
+
+networks:
+  mariadb_network:
+    name: mariadb_network
+    driver: bridge
+
+services:
+  db:
+    container_name: mariadb
+    image: mariadb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - MARIADB_USER=${DB_USER}
+      - MARIADB_PASSWORD=${DB_PASSWORD}
+      - MARIADB_DATABASE=${DB_NAME}
+      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - mariadb_network
+
+volumes:
+  db:
+    driver: local
