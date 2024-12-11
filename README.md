@@ -1,4 +1,4 @@
-# BANCO DE DADOS POSTGRESQL COM POSTGIS
+# BANCO DE DADOS MARIADB
 
 #### 1. Clonar o repositório git para sua máquina
 
